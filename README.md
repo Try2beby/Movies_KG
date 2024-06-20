@@ -31,9 +31,20 @@ movies_kg = MoviesKG(download=True, num_pages=100)
 部分数据图示
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="path/to/image1.jpg" alt="Image 1" style="width: 48%;"/>
-    <img src="path/to/image2.jpg" alt="Image 2" style="width: 48%;"/>
+    <img src="assets/2024-06-20-13-33-05.png" alt="Image 1" style="width: 50%;"/>
+    <img src="assets/2024-06-20-13-35-31.png" alt="Image 2" style="width: 50%;"/>
 </div>
+
+|     节点类型      |                             颜色                             | 含义                |
+| :---------------: | :----------------------------------------------------------: | ------------------- |
+|       Movie       | <div style="background-color: #2194f0; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 电影                |
+|       Genre       | <div style="background-color: #4cac50; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 类型                |
+| ProductionCompany | <div style="background-color: #f44336; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 制作公司            |
+|      Country      | <div style="background-color: #607d89; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 国家                |
+|      Person       | <div style="background-color: #673ab6; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 人（演员、导演...） |
+
+
+
 
 图中节点属性及关系属性:
 
