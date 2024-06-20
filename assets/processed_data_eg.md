@@ -1,6 +1,6 @@
 # 处理后数据示例
 
-以下数据是以 `movies, genres, production_companies, crew, cast, origin_country` 为键的字典.
+以下数据是以 `movies, genres, production_companies, crew, cast` 为键的字典.
 
 ```py
 {'movie': {'belongs_to_collection': 'Inside Out Collection',
