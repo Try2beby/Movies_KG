@@ -130,6 +130,7 @@ class MoviesKG:
             "revenue",
             "runtime",
             "tagline",
+            "title",
         ]
         # belongs_to_collection_keys = ["id", "name"]
         production_companies_keys = ["id", "name", "origin_country"]
@@ -239,8 +240,20 @@ class MoviesKG:
         self.graph.run("MATCH (n) DETACH DELETE n")
         print("Database cleared.")
 
-    def get_node_count(self):
-        return self.graph.run("MATCH (n) RETURN count(n) AS count").evaluate()
+    def get_node_counts_by_label(self):
+        # 获取所有标签
+        labels_query = "CALL db.labels() YIELD label"
+        labels_result = self.graph.run(labels_query).data()
+
+        node_counts = []
+        for record in labels_result:
+            label = record["label"]
+            count_query = f"MATCH (n:`{label}`) RETURN count(n) AS node_count"
+            count_result = self.graph.run(count_query).data()
+            node_count = count_result[0]["node_count"]
+            node_counts.append({"label": label, "node_count": node_count})
+
+        return node_counts
 
     def save_to_json(self):
         with open(self.config_spec_name, "w") as f:
