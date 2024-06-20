@@ -1,6 +1,6 @@
 # 处理后数据示例
 
-以下数据是以 `movies, genres, production_companies, crew, cast` 为键的字典.
+以下数据是以 `movies, genres, production_companies, crew, cast, origin_country` 为键的字典.
 
 ```py
 {'movie': {'belongs_to_collection': 'Inside Out Collection',
@@ -41,7 +41,7 @@
    'character': 'Sadness (voice)',
    'gender': 1},
   {'id': 59258,
-     'name': 'Lewis Black',
+   'name': 'Lewis Black',
    'character': 'Anger (voice)',
    'gender': 2},
   {'id': 25147, 'name': 'Tony Hale', 'character': 'Fear (voice)', 'gender': 2},
