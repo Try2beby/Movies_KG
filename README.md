@@ -31,9 +31,11 @@ movies_kg = MoviesKG(download=True, num_pages=100)
 部分数据图示
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="assets/2024-06-20-13-33-05.png" alt="Image 1" style="width: 50%;"/>
-    <img src="assets/2024-06-20-13-35-31.png" alt="Image 2" style="width: 50%;"/>
+    <img src="assets/local_40.svg" alt="Image 1" style="width: 40%;"/>
+    <img src="assets/local_200.svg" alt="Image 2" style="width: 40%;"/>
 </div>
+<!-- <img src="assets/local_40.svg" alt="Image 1" style="width: 50%;"/>
+<img src="assets/local_200.svg" alt="Image 2" style="width: 50%;"/> -->
 
 |     节点类型      |                             颜色                             | 含义                |
 | :---------------: | :----------------------------------------------------------: | ------------------- |
