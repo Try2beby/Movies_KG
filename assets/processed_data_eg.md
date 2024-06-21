@@ -41,7 +41,7 @@
    'character': 'Sadness (voice)',
    'gender': 1},
   {'id': 59258,
-     'name': 'Lewis Black',
+   'name': 'Lewis Black',
    'character': 'Anger (voice)',
    'gender': 2},
   {'id': 25147, 'name': 'Tony Hale', 'character': 'Fear (voice)', 'gender': 2},

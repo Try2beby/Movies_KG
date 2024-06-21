@@ -1,10 +1,14 @@
 from collections import Counter
 import matplotlib.pyplot as plt
+from matplotlib_inline import backend_inline
+
+backend_inline.set_matplotlib_formats("svg")
 
 
 class DataDescribe:
     def __init__(self, movies_detailed):
         self.movies_detailed = movies_detailed
+        self.save_path = "./fig/"
 
     def get_all(self, key, remove_none=True):
         return (
@@ -45,6 +49,12 @@ class DataDescribe:
         ax.xaxis.tick_top()
         ax.xaxis.set_label_position("top")
 
+        plt.subplots_adjust(left=0.3, right=0.9, top=0.85, bottom=0.02)
+        # save
+        plt.savefig(self.save_path + "belongs_to_collection.svg")
+
+        plt.show()
+
     def plot_genres(self):
         # genres
         data_genres = self.get_all("genres")
@@ -69,6 +79,12 @@ class DataDescribe:
             ax.spines[side].set_visible(False)
         ax.xaxis.tick_top()
         ax.xaxis.set_label_position("top")
+
+        plt.subplots_adjust(left=0.3, right=0.9, top=0.85, bottom=0.02)
+        # save
+        plt.savefig(self.save_path + "genres.svg")
+
+        plt.show()
 
     def plot_original_country(self):
         # original_country
@@ -95,6 +111,12 @@ class DataDescribe:
         ax.xaxis.tick_top()
         ax.xaxis.set_label_position("top")
 
+        plt.subplots_adjust(left=0.3, right=0.9, top=0.85, bottom=0.02)
+        # save
+        plt.savefig(self.save_path + "original_country.svg")
+
+        plt.show()
+
     def plot_production_companies(self):
         # production_companies
         data_companies = self.get_all("production_companies")
@@ -119,6 +141,12 @@ class DataDescribe:
             ax.spines[side].set_visible(False)
         ax.xaxis.tick_top()
         ax.xaxis.set_label_position("top")
+
+        plt.subplots_adjust(left=0.3, right=0.9, top=0.85, bottom=0.02)
+        # save
+        plt.savefig(self.save_path + "production_companies.svg")
+
+        plt.show()
 
     def plot_crew(self):
         # crew
@@ -145,3 +173,48 @@ class DataDescribe:
             ax.spines[side].set_visible(False)
         ax.xaxis.tick_top()
         ax.xaxis.set_label_position("top")
+
+        plt.subplots_adjust(left=0.3, right=0.9, top=0.85, bottom=0.02)
+        # save
+        plt.savefig(self.save_path + "crew.svg")
+
+        plt.show()
+
+    # plot net revenue: revenue - budget
+    def plot_net_revenue(self):
+        data_revenue = self.get_all("revenue")
+        data_budget = self.get_all("budget")
+        data_net_revenue = [
+            revenue - budget for revenue, budget in zip(data_revenue, data_budget)
+        ]
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.hist(data_net_revenue, bins=100, color="#1db9d8")
+        plt.xlabel("Net Revenue")
+        plt.ylabel("Count")
+        plt.title("Net Revenue Distribution")
+        for side in ["top", "right"]:
+            ax.spines[side].set_visible(False)
+
+        plt.subplots_adjust(left=0.15, right=0.9, top=0.85, bottom=0.15)
+        # save
+        plt.savefig(self.save_path + "net_revenue.svg")
+
+        plt.show()
+
+    # plot vote count & vote average scatter
+    def plot_vote_count_vote_average(self):
+        data_vote_count = self.get_all("vote_count")
+        data_vote_average = self.get_all("vote_average")
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.scatter(data_vote_count, data_vote_average, color="#1db9d8", alpha=0.5, s=5)
+        plt.xlabel("Vote Count")
+        plt.ylabel("Vote Average")
+        plt.title("Vote Count vs Vote Average")
+        for side in ["top", "right"]:
+            ax.spines[side].set_visible(False)
+
+        plt.subplots_adjust(left=0.15, right=0.9, top=0.85, bottom=0.15)
+        # save
+        plt.savefig(self.save_path + "vote_count_vote_average.svg")
+
+        plt.show()
