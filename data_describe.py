@@ -180,24 +180,42 @@ class DataDescribe:
 
         plt.show()
 
-    # plot net revenue: revenue - budget
-    def plot_net_revenue(self):
-        data_revenue = self.get_all("revenue")
+    # # plot net revenue: revenue - budget
+    # def plot_net_revenue(self):
+    #     data_revenue = self.get_all("revenue")
+    #     data_budget = self.get_all("budget")
+    #     data_net_revenue = [
+    #         revenue - budget for revenue, budget in zip(data_revenue, data_budget)
+    #     ]
+    #     fig, ax = plt.subplots(figsize=(8, 6))
+    #     ax.hist(data_net_revenue, bins=100, color="#1db9d8")
+    #     plt.xlabel("Net Revenue")
+    #     plt.ylabel("Count")
+    #     plt.title("Net Revenue Distribution")
+    #     for side in ["top", "right"]:
+    #         ax.spines[side].set_visible(False)
+
+    #     plt.subplots_adjust(left=0.15, right=0.9, top=0.85, bottom=0.15)
+    #     # save
+    #     plt.savefig(self.save_path + "net_revenue.svg")
+
+    #     plt.show()
+
+    # plot budget & revenue scatter
+    def plot_budget_revenue(self):
         data_budget = self.get_all("budget")
-        data_net_revenue = [
-            revenue - budget for revenue, budget in zip(data_revenue, data_budget)
-        ]
+        data_revenue = self.get_all("revenue")
         fig, ax = plt.subplots(figsize=(8, 6))
-        ax.hist(data_net_revenue, bins=100, color="#1db9d8")
-        plt.xlabel("Net Revenue")
-        plt.ylabel("Count")
-        plt.title("Net Revenue Distribution")
+        ax.scatter(data_budget, data_revenue, color="#1db9d8", alpha=0.5, s=5)
+        plt.xlabel("Budget")
+        plt.ylabel("Revenue")
+        plt.title("Budget vs Revenue")
         for side in ["top", "right"]:
             ax.spines[side].set_visible(False)
 
         plt.subplots_adjust(left=0.15, right=0.9, top=0.85, bottom=0.15)
         # save
-        plt.savefig(self.save_path + "net_revenue.svg")
+        plt.savefig(self.save_path + "budget_revenue.svg")
 
         plt.show()
 

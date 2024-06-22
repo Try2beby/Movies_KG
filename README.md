@@ -37,12 +37,12 @@ movies_kg = MoviesKG(download=True, num_pages=100)
 <!-- <img src="assets/local_40.svg" alt="Image 1" style="width: 50%;"/>
 <img src="assets/local_200.svg" alt="Image 2" style="width: 50%;"/> -->
 
-|     节点类型      |                             颜色                             | 含义                |
-| :---------------: | :----------------------------------------------------------: | ------------------- |
-|       Movie       | <div style="background-color: #2194f0; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 电影                |
-|       Genre       | <div style="background-color: #4cac50; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 类型                |
-| ProductionCompany | <div style="background-color: #f44336; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 制作公司            |
-|      Country      | <div style="background-color: #607d89; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 国家                |
+|     节点类型      |                             颜色                             |        含义         |
+| :---------------: | :----------------------------------------------------------: | :-----------------: |
+|       Movie       | <div style="background-color: #2194f0; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> |        电影         |
+|       Genre       | <div style="background-color: #4cac50; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> |        类型         |
+| ProductionCompany | <div style="background-color: #f44336; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> |      制作公司       |
+|      Country      | <div style="background-color: #607d89; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> |        国家         |
 |      Person       | <div style="background-color: #673ab6; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></div> | 人（演员、导演...） |
 
 
