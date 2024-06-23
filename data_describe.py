@@ -207,6 +207,15 @@ class DataDescribe:
         data_revenue = self.get_all("revenue")
         fig, ax = plt.subplots(figsize=(8, 6))
         ax.scatter(data_budget, data_revenue, color="#1db9d8", alpha=0.5, s=5)
+
+        # 添加 y = x 线
+        ax.plot(
+            [min(data_budget), max(data_budget)],
+            [min(data_budget), max(data_budget)],
+            color="red",
+            linestyle="--",
+        )
+
         plt.xlabel("Budget")
         plt.ylabel("Revenue")
         plt.title("Budget vs Revenue")

@@ -3,6 +3,10 @@ from py2neo import Graph, Node, Relationship
 import tqdm
 import json
 import time
+import random
+import pandas as pd
+
+random.seed(42)
 
 import dotenv
 
@@ -178,6 +182,61 @@ class MoviesKG:
         for movie in tqdm.tqdm(self.filtered_data, desc="Building graph"):
             self.insert_one_movie(movie)
 
+    def add_user_preferences(self, num_users=100, num_data_points=1000):
+        # Load your data
+        movie_names = self.get_all_movie_titles()
+
+        # Demographic data ranges and options
+        birth_years_range = (1950, 2005)
+        genders = ["Male", "Female", "Other"]
+        locations = [
+            "USA",
+            "UK",
+            "Canada",
+            "Australia",
+            "France",
+            "Germany",
+            "India",
+            "Japan",
+        ]
+
+        opinions = ["liked", "loved", "ignored", "disliked", "hated"]
+
+        # Connect to Neo4j
+        graph = self.graph
+
+        # First creating User nodes
+        for i in tqdm.tqdm(range(1, num_users + 1), desc="Creating User nodes"):
+            user_name = f"User {i}"
+            birth_year = random.randint(*birth_years_range)
+            gender = random.choice(genders)
+            location = random.choice(locations)
+
+            user_node = f"""
+            CREATE (:User {{
+                id: {i},
+                name: '{user_name}', 
+                birthYear: {birth_year}, 
+                gender: '{gender}', 
+                location: '{location}'
+            }})
+            """
+            graph.run(user_node)
+
+        # Then Matching User nodes with Movie nodes at random
+        for _ in tqdm.tqdm(range(num_data_points), desc="Creating relationships"):
+            user_index = random.randint(1, num_users)
+            user_name = f"User {user_index}"
+
+            opinion_edge = random.choice(opinions).upper()
+            movie_name = random.choice(movie_names)
+
+            opinion_query = f"""
+            MATCH (m:Movie {{title: "{movie_name}"}}), (p:User {{name: '{user_name}'}})
+            MERGE (p)-[:{opinion_edge}]->(m)
+            """
+            graph.run(opinion_query)
+
     def insert_one_movie(self, movie_data):
         tx = self.graph.begin()
 
@@ -239,6 +298,11 @@ class MoviesKG:
     def clear_database(self):
         self.graph.run("MATCH (n) DETACH DELETE n")
         print("Database cleared.")
+
+    def get_all_movie_titles(self):
+        query = "MATCH (m:Movie) RETURN m.title AS title"
+        res = self.graph.run(query).data()
+        return [record["title"] for record in res]
 
     def get_node_counts_by_label(self):
         # 获取所有标签
