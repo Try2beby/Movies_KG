@@ -146,6 +146,12 @@ response: MATCH (d:Director)-[:DIRECTOR]->(m:Movie) WHERE apoc.text.levenshteinS
 
 question: What other films has the director of 'The Dark Knight' directed?
 response: MATCH (m:Movie) WHERE apoc.text.levenshteinSimilarity(m.title, 'The Dark Knight') >= {similarity_threshold} MATCH (m)<-[:DIRECTOR]-(p:Person)-[:DIRECTOR]->(otherMovies:Movie) RETURN otherMovies.title
+
+question: Which movies did user born in year 2001 like?
+response: MATCH (u:User)-[:LIKED]->(m:Movie) WHERE u.birthYear = 2001 RETURN m.title;
+
+question: Where do user who like the director Christopher Nolan live?
+response: MATCH (u:User)-[:LIKED]->(:Movie)<-[:DIRECTOR]-(d:Director) WHERE apoc.text.levenshteinSimilarity(d.name, 'Christopher Nolan') >= {similarity_threshold} RETURN u.location;
 ..."""
 ```
 
@@ -265,7 +271,7 @@ Helpful Answer: The movies that a user born in 2001 liked include 'Avengers 5', 
 
 
 #set text(
-  size: 10pt
+  size: 9pt
 )
 #figure(
   table(
