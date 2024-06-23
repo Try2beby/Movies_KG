@@ -30,10 +30,9 @@ movies_kg = MoviesKG(download=True, num_pages=100)
 
 部分数据图示
 
-<div style="display: flex; justify-content: space-between;">
-    <img src="assets/local_40.svg" alt="Image 1" style="width: 40%;"/>
-    <img src="assets/local_200.svg" alt="Image 2" style="width: 40%;"/>
-</div>
+| <img width=300px src="assets/local_40.svg" alt="local_40.svg"> | <img width=300px src="assets/local_200.svg" alt="local_200.svg"> |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+
 <!-- <img src="assets/local_40.svg" alt="Image 1" style="width: 50%;"/>
 <img src="assets/local_200.svg" alt="Image 2" style="width: 50%;"/> -->
 

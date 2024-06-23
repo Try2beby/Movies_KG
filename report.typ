@@ -1,8 +1,6 @@
 #set heading(numbering: "1.1")
 #show link: underline
 
-= 引言
-
 = 数据集和知识图谱构建
 
 == 数据集介绍
@@ -178,7 +176,7 @@ Helpful Answer: The movies that a user born in 2001 liked include 'Avengers 5', 
 下面是在撰写的电影知识图谱和用户信息相关问题上的测试结果:
 
 #set text(
-  size: 8pt
+  size: 9pt
 )
 
 #figure(
@@ -267,7 +265,7 @@ Helpful Answer: The movies that a user born in 2001 liked include 'Avengers 5', 
 
 
 #set text(
-  size: 8pt
+  size: 10pt
 )
 #figure(
   table(
